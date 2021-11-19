@@ -62,7 +62,7 @@
 	- Serveur SQL (MySQL, phpMyAdmin)	
 		- Gestion des droits utilisateurs
 		- Chiffrement TLS/SSL
-	- Serveur Web (Apache2)
+	- Serveur Web (Apache2/Nginx)
 		- Virtualhost (HTTP/HTTPS) et chiffrement TLS/SSL
 		- Redirection HTTP vers HTTPS
 		- Partage de charge
