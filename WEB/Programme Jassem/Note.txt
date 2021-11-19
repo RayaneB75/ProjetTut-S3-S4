@@ -1,0 +1,41 @@
+A faire :
+
+- Regarder comment intégrer le visualisateur de fichier dicom ou trouver comment en faire un.
+ (lien de la page du visualisateur de fichier dicom : https://www.imaios.com/en/Imaios-Dicom-Viewer)
+
+- Terminer le code de la mise en page de base.
+
+- Terminer la page d'acceuil.
+
+- Terminer la page de présentation du l'entreprise (le projet en gros)
+
+- Voir avec Baptiste pour intégrer sont code de page de connection avec mon code HTML
+
+- Apprendre a faire des site web annimée.
+
+- Finaliser la page de contact.
+
+- Faire une adresse mail générique au projet pour formulaire de contact
+
+- Avencer a fond sur le developpement des pages sur la semaine de vacs du 22/11/21 au 28/11/21
+
+
+A demander au groupe :
+
+-
+
+
+
+
+A valider par le groupe :
+
+- J'ai mis en place un bout de code CSS qui permet d'adapter la page en fonction de l'écran (tel, ordi)
+
+- Valider les croquis des pages pour lancement de la programation
+
+
+
+Fait!!!! :
+
+- Faire le logo et le nom de l'entreprise. (Logo n°1)
+

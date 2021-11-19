@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+
+            /*début mise en page du body*/
+ body{
+    margin: 0px;            /*taille du body en px*/
+    padding: 0px;           /*taille du body en px*/
+    background-color: #f0f0f0;
+    font-family: "Raleway", sans-serif;
+}
+
+                /*fin mise en page du body*/
+
+                /*début mise en page du menu de haut de page*/
+.header{                               
+    background-color: #585858 ;     
+    height: 60px;               
+    margin: 10px;
+    background: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.riviera-imagerie.fr%2F&psig=AOvVaw3mD5gBJDsRe6lZMTD696OR&ust=1636406911827000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJD-0fqYh_QCFQAAAAAdAAAAABAO');
+}
+
+nav ul li{
+    list-style-type: none;
+    display: inline-block;
+    margin: 0px;
+    padding: 10px;
+    width: 190px;
+    height: 40px;
+    border-right: 1px solid rgb(255, 255, 255);
+    text-align: center;
+    line-height: 40px;
+}
+
+ul li a{
+    color: rgb(255, 255, 255);            
+    letter-spacing: 0.1rem;   
+
+}
+
+ul li a:hover{
+    color: blanchedalmond;
+    text-decoration: underline;
+}
+                    /*fin mise en page du menu de haut de page*/
+
+.connect{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #B2C5B2;
+}
+
+/*Debut mise en page du footer pied de page*/
+
+footer{
+    margin-top: 40px;
+    border-top: 5px solid rgb(255, 255, 255) ;
+    background-color: #585858 ; 
+    color: rgb(255, 255, 255) ; 
+}
+
+/*Debut mise en page du footer pied de page>parti des infos etablissement*/
+
+footer h1{
+    font-family: "Gill Sans", sans-serif; /*police d'écriture à mettre*/
+    border-bottom: 1px solid rgb(255, 255, 255) ; 
+    width: 20%;
+    padding-bottom: 5px;
+}
+
+footer .services{
+    margin-top: -10px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+footer .services .service{
+    margin-right: 30px;
+    padding: 10px;
+}
+
+footer .services .service p{
+    max-width: 450px;
+}
+
+footer #contact{
+    color: rgb(255, 255, 255); /*couleur à chager*/
+}
+
