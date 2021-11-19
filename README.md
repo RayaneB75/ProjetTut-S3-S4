@@ -1,6 +1,6 @@
 # Projet Tutoré S3-S4
 
-## Jassem / Abdallah
+## Abdallah
 **Coté Front-end** :
 - Interface personnel hospitalier 
 	- Menu personnalisé
@@ -15,7 +15,7 @@
 		- Anonymisation des informations —> Récupération du nom/prénom/âge/sexe/... grâce au numéro du patient
 - Animation entre les pages (UX)
 
-## Abdallah / Jassem
+## Jassem
 ### **Coté Front-end** :
 - Interface médecin 
 	- Menu personnalisé
