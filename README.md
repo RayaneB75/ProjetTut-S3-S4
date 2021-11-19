@@ -1,19 +1,19 @@
 # Projet Tutoré S3-S4
 
 ## Jassem / Abdallah
-- **Coté Front-end** :
-	- Interface personnel hospitalier 
-		- Menu personnalisé
-			- Profil
-			- Dicom Viewer
-			- Paramètres
-		- Ajout/Modifications informations patients
-		- Transfert vers un praticien
-		- Pour les images Dicom
-			- Lecteur des enregistrement
-			- Prise de note pour la retranscription
-			- Anonymisation des informations —> Récupération du nom/prénom/âge/sexe/... grâce au numéro du patient
-	- Animation entre les pages (UX)
+**Coté Front-end** :
+- Interface personnel hospitalier 
+	- Menu personnalisé
+		- Profil
+		- Dicom Viewer
+		- Paramètres
+	- Ajout/Modifications informations patients
+	- Transfert vers un praticien
+	- Pour les images Dicom
+		- Lecteur des enregistrement
+		- Prise de note pour la retranscription
+		- Anonymisation des informations —> Récupération du nom/prénom/âge/sexe/... grâce au numéro du patient
+- Animation entre les pages (UX)
 
 ## Abdallah / Jassem
 ### **Coté Front-end** :
@@ -45,26 +45,30 @@
 	- Utilisateur connectés
 	- Monitoring du nombre d’utilisateurs connectés)
 	- Dépannage de comptes : mot de passe oublié → Mail de récupération de mot de passe (authentification à deux facteurs)
-### ***Coté Front-end*** :
+### **Coté Front-end** :
 - Page de contact / Support
 - Formulaire interactif (menu déroulant - Exemple : https://help.twitter.com/fr/forms)
 - Foire Au Questions (FAQ – Exemple : https://help.twitter.com/fr)
 
 ## Rayane : 
 ### **Côté Back-end** :
-- Serveur VPN 
-	- Chiffrement
-	- Base de données reliée à la base de données Web 
 - Configuration des serveurs (Docker : hyperviseur de type 1)
-	- SQL via phpMyAdmin	
+	- Serveur DNS (Bind9)		
+		- Domaine/zone principal.e (page d’accueil)
+		- Sous domaine/zone (interface admin/utilisateurs)
+	- Serveur VPN (OpenVPN)
+		- Chiffrement
+		- Base de données reliée à la base de données Web
+	- Serveur SQL (MySQL, phpMyAdmin)	
 		- Gestion des droits utilisateurs
 		- Chiffrement TLS/SSL
-	- Serveur Apache
+	- Serveur Web (Apache2)
 		- Virtualhost (HTTP/HTTPS) et chiffrement TLS/SSL
 		- Redirection HTTP vers HTTPS
 		- Partage de charge
-		- Reverse proxy
-### Côté Front-end :
+		- Reverse proxy (sous-domaine pour interfaces différentes)
+
+### **Côté Front-end** :
 - Charte graphique
 - Harmonisation entre les pages de Baptiste, Jassem, Abdallah et Rayane
 - Page diverses sur le site
