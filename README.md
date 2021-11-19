@@ -11,7 +11,7 @@
 	- Transfert vers un praticien
 	- Pour les images Dicom
 		- Lecteur des enregistrement
-		- Prise de note pour la retranscription
+		- Prise de note pour la retranscription 
 		- Anonymisation des informations —> Récupération du nom/prénom/âge/sexe/... grâce au numéro du patient
 - Animation entre les pages (UX)
 
