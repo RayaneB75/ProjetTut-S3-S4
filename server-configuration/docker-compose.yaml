@@ -2,22 +2,21 @@ version: '3.8'
 services:
 
 ## Portainer = Gestion des containers docker ##
-portainer:
- image: portainer/portainer-ce:latest
- ports:
-  - 9000:9000
-  - 8000:8000
-  - 9443:9443
- restart: unless-stopped
- volumes:
-  - /var/run/docker.sock:/var/run/docker.sock
-  - /volume1/docker/projet-tutore/portainer:/data
-  - /volume1/docker/projet-tutore/shared:/shared
- command: -H unix:///var/run/docker.sock
+ portainer:
+  image: portainer/portainer-ce:latest
+  ports:
+   - 9000:9000
+   - 8000:8000
+   - 9443:9443
+  restart: unless-stopped
+  volumes:
+   - /var/run/docker.sock:/var/run/docker.sock
+   - /volume1/docker/projet-tutore/portainer:/data
+   - /volume1/docker/projet-tutore/shared:/shared
+  command: -H unix:///var/run/docker.sock
 
-## XAMPP = Serveur PHP+PhpMyAdmin##3
- #sudo docker run --name www -p 41061:22 -p 180:180 -p 1443:1443 -d -v /volume1/docker/rayane/projet-tut/www:/www tomsik68/xampp
- xampp:
+## Serveur PHP+PhpMyAdmin via Xampp ##
+ www:
   image: tomsik68/xampp:8
   restart: unless-stopped
   ports:
@@ -27,15 +26,24 @@ portainer:
   volumes:
    - /volume1/docker/rayane/projet-tut/www:/www
 
-## Serveur VPN via OpenVPN: 
-  #sudo docker run -v ~/openvpn/data:/etc/openvpn --log-driver=none --rm kylemanna/openvpn ovpn_genconfig -u udp://vpn.rayane.space
+## Serveur VPN via OpenVPN ##
+  #sudo docker run -d --name openvpn -v ~/openvpn/data:/etc/openvpn --log-driver=none --rm kylemanna/openvpn ovpn_genconfig -u udp://vpn.rayane.space
  openvpn:
-    image: kylemanna/openvpn:latest
-    container_name: openvpn
-    ports:
-      - 1194:1194/udp
-    volumes:
-      - /volume1/docker/rayane/openvpn/data:/etc/openvpn
-    cap_add:
-      - NET_ADMIN
-    restart: unless-stopped
+  image: kylemanna/openvpn:latest
+  container_name: openvpn
+  ports:
+   - 1194:1194/udp
+  volumes:
+   - /volume1/docker/rayane/openvpn/data:/etc/openvpn
+  cap_add:
+   - NET_ADMIN
+  restart: unless-stopped
+
+## Serveur DNS via bind9 ##
+ ns:
+  image: internetsystemsconsortium/bind9:9.16 #9.16 est la dernière version stable
+  restart: unless-stopped
+  ports:
+   - 53:53/udp
+   - 53:53/tcp
+   - 953:953/tcp

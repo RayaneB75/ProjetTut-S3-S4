@@ -1,0 +1,5 @@
+# Créer un utilisateur
+easyrsa build-client-full projet nopass
+
+# Récupérer son fichier
+ovpn_getclient projet > projet.ovpn
