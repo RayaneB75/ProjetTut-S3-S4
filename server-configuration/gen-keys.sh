@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 set -eu
 command -v openssl >/dev/null 2>&1 || { 
-    echo >&2 "Unable to find openssl. Please make sure openssl is installed and in your path."; exit 1; 
+	echo >&2 "Unable to find openssl. Please make sure openssl is installed and in your path."; exit 1; 
 }
 [[ ! -f openssl.cnf ]] && echo "Il faut exécuter le script depuis le répertoire /etc/openvpn/server" && exit 1
 
@@ -21,11 +21,13 @@ openssl req -new -newkey rsa:4096 -days 3650 -nodes -x509 \
 -extensions easyrsa_ca -keyout sample-ca/ca.key -out sample-ca/ca.crt \
 -subj "/C=VN/ST=SAIGON/L=SAIGON/O=OpenVPN-TEST/emailAddress=vpn@test.net" \
 -config openssl.cnf
+# à changer -
 
 # Création de clé côté serveur
 openssl req -new -nodes -config openssl.cnf -extensions server \
 -keyout sample-ca/server.key -out sample-ca/server.csr \
 -subj "/C=VN/ST=SAIGON/O=OpenVPN-TEST/CN=VPN-Server/emailAddress=vpn@test.net"
+# à changer -
 
 # Création du certificat :
 openssl ca -batch -config openssl.cnf -extensions server \
@@ -34,8 +36,8 @@ openssl ca -batch -config openssl.cnf -extensions server \
 # On copie les fichiers serveurs dans le répertoire d'OpenVPN pour les prendres en compte
 for i in server.key server.crt ca.crt dh2048.pem
 do
-    cp $i /etc/openvpn 2>&1 && err=$(echo $?)
-    [[ $err -ne 0 ]] && echo -e "\nErreur dans la copie du fichier $i"
+	cp $i /etc/openvpn 2>&1 && err=$(echo $?)
+	[[ $err -ne 0 ]] && echo -e "\nErreur dans la copie du fichier $i"
 done
 
 # Paramètre DH pour la configuration du serveur OpenVPN
