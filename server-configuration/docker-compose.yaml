@@ -5,7 +5,7 @@ networks:
     ipam:
       driver: bridge
       config:
-        - subnet: "172.17.0.0/24"
+        - subnet: "172.17.0.0/16"
 
 services:
 ## Portainer = Gestion des containers docker ##
