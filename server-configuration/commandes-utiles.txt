@@ -1,8 +1,0 @@
-# Créer le container docker
-sudo docker run -v ~/openvpn/data:/etc/openvpn --log-driver=none --rm kylemanna/openvpn ovpn_genconfig -u udp://vpn.rayane.space
-
-# Créer un utilisateur
-sudo docker run -v /volume1/docker/rayane/openvpn/data:/etc/openvpn --rm -it kylemanna/openvpn easyrsa build-client-full projet nopass
-
-# Récupérer son fichier
-sudo docker run -v /volume1/docker/rayane/openvpn/data:/etc/openvpn --rm kylemanna/openvpn ovpn_getclient projet > projet.ovpn
