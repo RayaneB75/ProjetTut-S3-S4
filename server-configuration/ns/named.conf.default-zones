@@ -27,7 +27,7 @@ zone "255.in-addr.arpa" {
 	file "/etc/bind/db.255";
 };
 
-zone "health-sprint.com" {
+zone "health-sprint.fr" {
 	type master;
-	file "/etc/bind/db.health-sprint.com";
+	file "/etc/bind/db.health-sprint.fr";
 };

@@ -1,0 +1,15 @@
+$TTL 604800
+@               IN      SOA     ns      admin (
+                        202112201       ; Serial
+                        604800          ; Refresh
+                        86400           ; Retry
+                        2419200         ; Expire
+                        86400 )         ; Negative Cache TTL
+;
+@               IN      NS              ns
+@               IN      MX      10      mail
+ns              IN      A               172.17.0.2
+www             IN      A               172.17.0.3
+vpn             IN      A               172.17.0.4
+portainer       IN      A               172.17.0.5
+mail            IN      A               172.17.0.6
