@@ -1,8 +1,6 @@
 #!/bin/bash
 
-#On fait un backup des containers:
-
-
+# Backup des containers:
 for i in www openvpn ns portainer
 do
     echo "Backup du container $i en cours"
