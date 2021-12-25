@@ -1,15 +1,6 @@
 version:  '3.8'
 
-# Réseau de l'hyperviseur
-networks:
-  vnet:
-    ipam:
-      driver: bridge
-      config:
-        - subnet: "172.17.0.0/16"
-
 services:
-
 ## Serveur DNS via bind9 : internetsystemsconsortium/bind9 (v9.16) ##
   ns:
     image: backup-ns
@@ -20,10 +11,10 @@ services:
       - 53:53/tcp
       - 953:953/tcp
     volumes:
-      - /volume1/docker/projet-tutore/shared:/shared  
+      - /volume1/docker/rayane/shared:/shared  
     networks:
-      vnet:
-        ipv4_address: 172.17.0.2
+      projet:
+        ipv4_address: 10.10.0.2
 
 ## Serveur PHP+PhpMyAdmin via Xampp : tomsik68/xampp (v8) ##
   www:
@@ -31,15 +22,15 @@ services:
     restart: unless-stopped
     container_name: www
     ports:
+      - 22:22/udp
       - 1443:1443
       - 180:180
-      - 41061:22
     volumes:
-      - /volume1/docker/rayane/projet-tut/www:/www
-      - /volume1/docker/projet-tutore/shared:/shared
+      - /volume1/docker/rayane/www:/www
+      - /volume1/docker/rayane/shared:/shared
     networks:
-      vnet:
-        ipv4_address: 172.17.0.3
+      projet:
+        ipv4_address: 10.10.0.3
 
 ## Serveur VPN via OpenVPN : kylemanna/openvpn ##
   openvpn:
@@ -50,10 +41,10 @@ services:
       - 1194:1194/udp
     volumes:
       - /volume1/docker/rayane/openvpn/data:/etc/openvpn
-      - /volume1/docker/projet-tutore/shared:/shared
+      - /volume1/docker/rayane/shared:/shared
     networks:
-      vnet:
-        ipv4_address: 172.17.0.4
+      projet:
+        ipv4_address: 10.10.0.4
     cap_add:
       - NET_ADMIN    
 
@@ -68,9 +59,16 @@ services:
       - 9443:9443
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /volume1/docker/projet-tutore/portainer:/data
-      - /volume1/docker/projet-tutore/shared:/shared
+      - /volume1/docker/rayane/portainer:/data
+      - /volume1/docker/rayane/shared:/shared
     networks:
-      vnet:
-        ipv4_address: 172.17.0.5
-    command: -H unix:///var/run/docker.sock    
+      projet:
+        ipv4_address: 10.10.0.5
+    command: -H unix:///var/run/docker.sock
+
+# Réseau de l'hyperviseur
+networks:
+  projet:
+    ipam:
+      config:
+        - subnet: "10.10.0.0/16"

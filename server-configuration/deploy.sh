@@ -60,10 +60,10 @@ function updateRepo {
 
 
 # ----------- main ----------- #
-mkdir -p /volume1/docker/rayane/projet-tut/www
+mkdir -p /volume1/docker/rayane/www
 mkdir -p /volume1/docker/rayane/openvpn/data
-mkdir -p /volume1/docker/projet-tutore/portainer
-mkdir -p /volume1/docker/projet-tutore/shared
+mkdir -p /volume1/docker/rayane/portainer
+mkdir -p /volume1/docker/rayane/shared
 
 [[ ! -d projettut ]] && mkdir projettut && [[ $? -ne 0 ]] && echo "$ul\Vérifier les droits d'accès de ce répertoire pour l'utilisateur$rouge $USER$rouge$ul" && exit 1
 chmod 777 projettut
@@ -84,7 +84,7 @@ getApp "docker-ce" ; getApp "docker-ce-cli" ; getApp "containerd.io"
 # Récupération des container
 getBack "ns" ; getBack "www" ; getBack "portainer" ; getBack "openvpn"
 
-echo "$ul Où se situe le fichier docker-compose$rien"
+echo "$ul Chemin d'accès du fichier $vert docker-compose $rien ?"
 read fic
 echo "$vert On démarre les container docker $rien"
-docker-compose up -d $fic
+sudo docker-compose up -d $fic

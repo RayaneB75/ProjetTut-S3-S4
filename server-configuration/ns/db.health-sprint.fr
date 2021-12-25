@@ -8,8 +8,8 @@ $TTL 604800
 ;
 @               IN      NS              ns
 @               IN      MX      10      mail
-ns              IN      A               172.17.0.2
-www             IN      A               172.17.0.3
-vpn             IN      A               172.17.0.4
-portainer       IN      A               172.17.0.5
-mail            IN      A               172.17.0.6
+ns              IN      A               10.10.0.2
+www             IN      A               10.10.0.3
+vpn             IN      A               10.10.0.4
+portainer       IN      A               10.10.0.5
+mail            IN      A               10.10.0.6
