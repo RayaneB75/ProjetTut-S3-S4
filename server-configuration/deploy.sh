@@ -1,14 +1,15 @@
 #!/bin/bash
 
-# Variables globales
 shopt -s expand_aliases # Permet d'intégrer les alias dans les scripts
+
+# Variables globales
 alias echo="echo -e"
 rouge="\e[31m"
 rien="\e[0m"
 vert="\e[32m"
 ul="\e[4m"
 
-# Function installation de paquetage 1 par 1
+# Function installation de paquetage
 function getApp() {
 	echo "##########################################"
 	echo "$ul Installation du paquetage $1 $rien \n"
