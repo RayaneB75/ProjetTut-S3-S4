@@ -29,14 +29,14 @@ echo "\nRepositories$vert OK $rien"
 
 # Function installation de paquetage 1 par 1
 function getApp() {
-    for i in $*; do
-        echo "##########################################"
-        echo "$ul Installation du paquetage $i\n $rien"
-        sudo apt install $i -y
-        [[ $? -ne 0 ]] && echo "$rouge Erreur. $rien $ul Vérifier l'installation du paquetage $i $rien" && continue
-        echo "\nInstallation de $i$vert OK $rien"
-        echo "##########################################\n"
-    done
+	for i in $*; do
+		echo "##########################################"
+		echo "$ul Installation du paquetage $i\n $rien"
+		sudo apt install $i -y
+		[[ $? -ne 0 ]] && echo "$rouge Erreur. $rien $ul Vérifier l'installation du paquetage $i $rien" && continue
+		echo "\nInstallation de $i$vert OK $rien"
+		echo "##########################################\n"
+	done
 }
 
 # Installation des paquetages système (pour faire la suite)
@@ -46,8 +46,8 @@ getApp $app
 # Récupération du repository docker
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+	"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
+	$(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # Installation des paquetages pour la maquette
 app="docker-ce docker-ce-cli containerd.io"
