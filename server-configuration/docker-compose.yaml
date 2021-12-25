@@ -1,5 +1,6 @@
 version:  '3.8'
 
+# Réseau de l'hyperviseur
 networks:
   vnet:
     ipam:
@@ -8,61 +9,68 @@ networks:
         - subnet: "172.17.0.0/16"
 
 services:
-## Portainer = Gestion des containers docker ##
-  portainer:
-    image: portainer/portainer-ce:latest
-    ports:
-      - 9000:9000
-      - 8000:8000
-      - 9443:9443
+
+## Serveur DNS via bind9 : internetsystemsconsortium/bind9 (v9.16) ##
+  ns:
+    image: backup-ns
     restart: unless-stopped
+    container_name: ns
+    ports:
+      - 53:53/udp
+      - 53:53/tcp
+      - 953:953/tcp
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /volume1/docker/projet-tutore/portainer:/data
-      - /volume1/docker/projet-tutore/shared:/shared
-    command: -H unix:///var/run/docker.sock
+      - /volume1/docker/projet-tutore/shared:/shared  
     networks:
       vnet:
-        ipv4_address: 172.17.0.5
+        ipv4_address: 172.17.0.2
 
-## Serveur PHP+PhpMyAdmin via Xampp ##
+## Serveur PHP+PhpMyAdmin via Xampp : tomsik68/xampp (v8) ##
   www:
-    image: tomsik68/xampp:8
+    image: backup-www
     restart: unless-stopped
+    container_name: www
     ports:
       - 1443:1443
       - 180:180
       - 41061:22
     volumes:
       - /volume1/docker/rayane/projet-tut/www:/www
+      - /volume1/docker/projet-tutore/shared:/shared
     networks:
       vnet:
         ipv4_address: 172.17.0.3
 
-## Serveur VPN via OpenVPN ##
-    # sudo docker run -d --name openvpn -v ~/openvpn/data:/etc/openvpn --log-driver=none --rm kylemanna/openvpn ovpn_genconfig -u udp://vpn.rayane.space
+## Serveur VPN via OpenVPN : kylemanna/openvpn ##
   openvpn:
-    image: kylemanna/openvpn:latest
+    image: backup-openvpn
+    restart: unless-stopped
     container_name: openvpn
     ports:
       - 1194:1194/udp
     volumes:
       - /volume1/docker/rayane/openvpn/data:/etc/openvpn
-    cap_add:
-      - NET_ADMIN
-    restart: unless-stopped
+      - /volume1/docker/projet-tutore/shared:/shared
     networks:
       vnet:
         ipv4_address: 172.17.0.4
+    cap_add:
+      - NET_ADMIN    
 
-## Serveur DNS via bind9 ##
-  ns:
-    image: internetsystemsconsortium/bind9:9.16  #9.16 est la dernière version stable
+## Portainer = Gestion des containers docker : portainer/portainer-ce ##
+  portainer:
+    image: backup-portainer
     restart: unless-stopped
+    container_name: portainer
     ports:
-      - 53:53/udp
-      - 53:53/tcp
-      - 953:953/tcp
+      - 9000:9000
+      - 8000:8000
+      - 9443:9443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /volume1/docker/projet-tutore/portainer:/data
+      - /volume1/docker/projet-tutore/shared:/shared
     networks:
       vnet:
-        ipv4_address: 172.17.0.2
+        ipv4_address: 172.17.0.5
+    command: -H unix:///var/run/docker.sock    

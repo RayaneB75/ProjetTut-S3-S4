@@ -60,6 +60,10 @@ function updateRepo {
 
 
 # ----------- main ----------- #
+mkdir -p /volume1/docker/rayane/projet-tut/www
+mkdir -p /volume1/docker/rayane/openvpn/data
+mkdir -p /volume1/docker/projet-tutore/portainer
+mkdir -p /volume1/docker/projet-tutore/shared
 
 [[ ! -d projettut ]] && mkdir projettut && [[ $? -ne 0 ]] && echo "$ul\Vérifier les droits d'accès de ce répertoire pour l'utilisateur$rouge $USER$rouge$ul" && exit 1
 chmod 777 projettut
