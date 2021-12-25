@@ -1,5 +1,9 @@
-# Créer un utilisateur
-easyrsa build-client-full projet nopass
+# Créer un utilisateur avec mot de passe
+export CLIENTNAME="your_client_name"
+docker-compose run --rm openvpn easyrsa build-client-full $CLIENTNAME
 
 # Récupérer son fichier
-ovpn_getclient projet > projet.ovpn
+docker-compose run --rm openvpn ovpn_getclient $CLIENTNAME > $CLIENTNAME.ovpn
+
+# Revoquer un certificat client en supprimant le fichier crt, la clé et le fichier req.
+docker-compose run --rm openvpn ovpn_revokeclient $CLIENTNAME remove

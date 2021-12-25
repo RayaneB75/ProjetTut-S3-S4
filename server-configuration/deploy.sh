@@ -79,3 +79,8 @@ updateRepo
 getApp "docker-ce" ; getApp "docker-ce-cli" ; getApp "containerd.io"
 # Récupération des container
 getBack "ns" ; getBack "www" ; getBack "portainer" ; getBack "openvpn"
+
+echo "$ul Où se situe le fichier docker-compose$rien"
+read fic
+echo "$vert On démarre les container docker $rien"
+docker-compose up -d $fic

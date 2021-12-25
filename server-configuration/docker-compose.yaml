@@ -40,7 +40,7 @@ services:
         ipv4_address: 172.17.0.3
 
 ## Serveur VPN via OpenVPN ##
-    #sudo docker run -d --name openvpn -v ~/openvpn/data:/etc/openvpn --log-driver=none --rm kylemanna/openvpn ovpn_genconfig -u udp://vpn.rayane.space
+    # sudo docker run -d --name openvpn -v ~/openvpn/data:/etc/openvpn --log-driver=none --rm kylemanna/openvpn ovpn_genconfig -u udp://vpn.rayane.space
   openvpn:
     image: kylemanna/openvpn:latest
     container_name: openvpn
