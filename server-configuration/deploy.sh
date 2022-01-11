@@ -1,9 +1,10 @@
 #!/bin/bash
 
-shopt -s expand_aliases # Permet d'intégrer les alias dans les scripts
+# Permet d'intégrer les alias dans les scripts
+shopt -s expand_aliases 
+alias echo="echo -e"
 
 # Variables globales
-alias echo="echo -e"
 rouge="\e[31m"
 rien="\e[0m"
 vert="\e[32m"
@@ -20,7 +21,7 @@ function getApp() {
 	done
 }
 
-# Function de récupération des container backupé
+# Function de récupération des container backupés
 function getBack() {
 	echo "$ul Répertoire de sauvegarde des container $rien"
 	read rep
@@ -61,17 +62,15 @@ function updateRepo {
 
 
 # ----------- main ----------- #
+
+# On vérifie qu'on est bien en root
+getAdmin
+
 mkdir -p /volume1/docker/rayane/www
 mkdir -p /volume1/docker/rayane/openvpn/data
 mkdir -p /volume1/docker/rayane/portainer
 mkdir -p /volume1/docker/rayane/shared
 
-[[ ! -d projettut ]] && mkdir projettut && [[ $? -ne 0 ]] && echo "$ul\Vérifier les droits d'accès de ce répertoire pour l'utilisateur$rouge $USER$rouge$ul" && exit 1
-chmod 777 projettut
-cd projettut # On rentre dans le répertoire
-
-# On vérifie qu'on est bien en root
-getAdmin
 # Mise à jour des repositories
 updateRepo
 # Installation des paquetages système (pour rajouter les repositories)

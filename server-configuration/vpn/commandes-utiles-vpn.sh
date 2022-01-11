@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Créer un utilisateur avec mot de passe
+# Créer un utilisateur avec mot de passe --> à utiliser pour php
 export CLIENTNAME="your_client_name"
 docker-compose run --rm openvpn easyrsa build-client-full $CLIENTNAME
 
