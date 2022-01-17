@@ -56,7 +56,7 @@ plugin_dir=/opt/lampp/lib/mysql/plugin/
 # required unique id between 1 and 2^32 - 1
 # defaults to 1 if master-host is not set
 # but will not function as a master if omitted
-server-id	=1
+server-id=1
 
 # Replication Slave (comment out master section to use this)
 #

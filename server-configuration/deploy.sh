@@ -4,37 +4,31 @@
 shopt -s expand_aliases 
 alias echo="echo -e"
 
-# Variables globales
-rouge="\e[31m"
-rien="\e[0m"
-vert="\e[32m"
-ul="\e[4m"
-
 # Function installation de paquetage
 function getApp() {
 	echo "##########################################"
-	echo "$ul Installation du paquetage $1 $rien \n"
+	echo "\e[4m Installation du paquetage $1 \e[0m \n"
 	sudo apt install $1 -y
-	[[ $? -ne 0 ]] && echo "$rouge Erreur. $rien $ul Vérifier l'installation du paquetage $1 $rien"
-	echo "\nInstallation de $1$vert OK $rien"
+	[[ $? -ne 0 ]] && echo "\e[31m Erreur. \e[0m \e[4m Vérifier l'installation du paquetage $1 \e[0m"
+	echo "\nInstallation de $1\e[32m OK \e[0m"
 	echo "##########################################\n"
 	done
 }
 
 # Function de récupération des container backupés
 function getBack() {
-	echo "$ul Répertoire de sauvegarde des container $rien"
+	echo "\e[4m Répertoire de sauvegarde des container \e[0m"
 	read rep
 	echo "##########################################"
-	echo "$ul Récupération du container $1 $rien\n "
+	echo "\e[4m Récupération du container $1 \e[0m\n "
 	docker load -i $rep/backup-$1
 	echo "##########################################"
 }
 
 # On vérifie que le script est bien execute en root (sudo)
 function getAdmin() {
-	[[ $EUID -ne 0 ]] && echo "Le script doit être lancé en$rouge root$rien:$vert \$sudo <script> $rien" && exit 1
-	echo "$ul Lancement du script de déploiement $rien"
+	[[ $EUID -ne 0 ]] && echo "Le script doit être lancé en\e[31m root\e[0m:\e[32m \$sudo <script> \e[0m" && exit 1
+	echo "\e[4m Lancement du script de déploiement \e[0m"
 }
 
 # Récupération du repository docker
@@ -48,18 +42,14 @@ function getRepo {
 # Mise à jour repositories
 function updateRepo {
 	echo "---------------------------------------------------------"
-	echo "$ul Récupération des paquetages nécessaires $rien \n"
+	echo "\e[4m Récupération des paquetages nécessaires \e[0m \n"
 	echo "##########################################"
-	echo "$ul Mise à jour des repository : $rien"
+	echo "\e[4m Mise à jour des repository : \e[0m"
 	sudo apt update
-	[[ $? -ne 0 ]] && echo "##########################################" && echo "$rouge Erreur. $rien $ul Vérifier la connexion réseau $rien" && exit 1
+	[[ $? -ne 0 ]] && echo "##########################################" && echo "\e[31m Erreur. \e[0m \e[4m Vérifier la connexion réseau \e[0m" && exit 1
 	echo "##########################################"
-	echo "\nRepositories$vert OK $rien"
+	echo "\nRepositories\e[32m OK \e[0m"
 }
-
-
-
-
 
 # ----------- main ----------- #
 
@@ -84,7 +74,7 @@ getApp "docker-ce" ; getApp "docker-ce-cli" ; getApp "containerd.io"
 # Récupération des container
 getBack "ns" ; getBack "www" ; getBack "portainer" ; getBack "openvpn"
 
-echo "$ul Chemin d'accès du fichier $vert docker-compose $rien ?"
+echo "\e[4m Chemin d'accès du fichier \e[32m docker-compose \e[0m ?"
 read fic
-echo "$vert On démarre les container docker $rien"
+echo "\e[32m On démarre les container docker \e[0m"
 sudo docker-compose up -d $fic
