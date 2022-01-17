@@ -55,11 +55,15 @@ function updateRepo {
 
 # On vérifie qu'on est bien en root
 getAdmin
-
+mkdir -p /volume1/docker/rayane/docker-data/dms/mail-logs/
+mkdir -p /volume1/docker/rayane/docker-data/dms/mail-state/
+mkdir -p /volume1/docker/rayane/docker-data/dms/mail-data/
+mkdir -p /volume1/docker/rayane/docker-data/dms/config/
 mkdir -p /volume1/docker/rayane/www
 mkdir -p /volume1/docker/rayane/openvpn/data
 mkdir -p /volume1/docker/rayane/portainer
 mkdir -p /volume1/docker/rayane/shared
+mkdir -p /volume1/docker/rayane/docker-data/secrets/
 
 # Mise à jour des repositories
 updateRepo

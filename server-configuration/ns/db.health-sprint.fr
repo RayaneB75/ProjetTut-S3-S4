@@ -13,3 +13,4 @@ www             IN      A               10.10.0.3
 vpn             IN      A               10.10.0.4
 portainer       IN      A               10.10.0.5
 mail            IN      A               10.10.0.6
+dicom           IN      A               10.10.0.7

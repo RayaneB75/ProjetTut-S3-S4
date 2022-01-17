@@ -4,17 +4,17 @@
     image: docker.io/mailserver/docker-mailserver:latest
     container_name: mailserver
     hostname: mail
-    domainname: example.com
+    domainname: rayane.space
     ports:
       - "25:25"
       - "143:143"
       - "587:587"
       - "993:993"
     volumes:
-      - ./docker-data/dms/mail-data/:/var/mail/
-      - ./docker-data/dms/mail-state/:/var/mail-state/
-      - ./docker-data/dms/mail-logs/:/var/log/mail/
-      - ./docker-data/dms/config/:/tmp/docker-mailserver/
+      - /volume1/docker/rayane/docker-data/dms/mail-data/:/var/mail/
+      - /volume1/docker/rayane/docker-data/dms/mail-state/:/var/mail-state/
+      - /volume1/docker/rayane/docker-data/dms/mail-logs/:/var/log/mail/
+      - /volume1/docker/rayane/docker-data/dms/config/:/tmp/docker-mailserver/
       - /etc/localtime:/etc/localtime:ro
     environment:
       - ENABLE_SPAMASSASSIN=1
@@ -28,4 +28,7 @@
     cap_add:
       - NET_ADMIN
       - SYS_PTRACE
-    restart: always
+    restart: unless-stooped
+    networks:
+        projet:
+          ipv4_address: 10.10.0.6
