@@ -66,6 +66,37 @@ services:
         ipv4_address: 10.10.0.5
     command: -H unix:///var/run/docker.sock
 
+## Portainer = Gestion des containers docker : portainer/portainer-ce ##
+  mailserver:
+    image: docker.io/mailserver/docker-mailserver:latest
+    container_name: mailserver
+    hostname: mail
+    domainname: health-sprint.fr
+    ports:
+      - "25:25"
+      - "143:143"
+      - "587:587"
+      - "993:993"
+    volumes:
+      - /volume1/docker/rayane/docker-data/dms/mail-data/:/var/mail/
+      - /volume1/docker/rayane/docker-data/dms/mail-state/:/var/mail-state/
+      - /volume1/docker/rayane/docker-data/dms/mail-logs/:/var/log/mail/
+      - /volume1/docker/rayane/docker-data/dms/config/:/tmp/docker-mailserver/
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - ENABLE_SPAMASSASSIN=1
+      - SPAMASSASSIN_SPAM_TO_INBOX=1
+      - ENABLE_CLAMAV=1
+      - ENABLE_FAIL2BAN=1
+      - ENABLE_POSTGREY=1
+      - ENABLE_SASLAUTHD=0
+      - ONE_DIR=1
+      - DMS_DEBUG=0
+    cap_add:
+      - NET_ADMIN
+      - SYS_PTRACE
+    restart: always
+
 # Réseau de l'hyperviseur
 networks:
   projet:
