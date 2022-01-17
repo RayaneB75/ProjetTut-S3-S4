@@ -66,9 +66,9 @@ services:
         ipv4_address: 10.10.0.5
     command: -H unix:///var/run/docker.sock
 
-## Portainer = Gestion des containers docker : portainer/portainer-ce ##
+## docker-mailserver = Serveur IMAP/POP et SMTP docker.io/mailserver/docker-mailserver ##
   mailserver:
-    image: docker.io/mailserver/docker-mailserver:latest
+    image: backup-mail
     container_name: mailserver
     hostname: mail
     domainname: health-sprint.fr
