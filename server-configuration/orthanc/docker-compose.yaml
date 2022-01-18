@@ -1,9 +1,11 @@
-orthanc:
+  orthanc:
       image: jodogne/orthanc-plugins:1.9.7
-      command: /volume1/docker/rayane/docker-data/secrets/  # Path to the configuration files (stored as secrets)
+      command: /volume1/docker/rayane/secrets/  # Path to the configuration files (stored as secrets)
       ports:
         - 4242:4242
         - 8042:8042
+      volumes:
+        - /volume1/docker/rayane/orthanc/:/var/lib/orthanc/db/  
       secrets:
         - orthanc.json
       environment:
@@ -12,8 +14,6 @@ orthanc:
       networks:
         projet:
           ipv4_address: 10.10.0.7
-      volumes:
-        - /volume1/docker/rayane/docker-data/orthanc/:/var/lib/orthanc/db/
-  secrets:
-    orthanc.json:
-      file: orthanc.json
+
+
+     
