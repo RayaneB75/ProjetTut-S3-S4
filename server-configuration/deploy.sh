@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Permet d'intégrer les alias dans les scripts
-shopt -s expand_aliases 
-alias echo="echo -e"
+shopt -s expand_aliases && alias echo="echo -e"
 
 # Function installation de paquetage
 function getApp() {
@@ -34,8 +33,7 @@ function getAdmin() {
 # Récupération du repository docker
 function getRepo {
 	curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-	echo \
-		"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
+	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
 		$(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 }
 
@@ -55,15 +53,16 @@ function updateRepo {
 
 # On vérifie qu'on est bien en root
 getAdmin
-mkdir -p /volume1/docker/rayane/docker-data/dms/mail-logs/
-mkdir -p /volume1/docker/rayane/docker-data/dms/mail-state/
-mkdir -p /volume1/docker/rayane/docker-data/dms/mail-data/
-mkdir -p /volume1/docker/rayane/docker-data/dms/config/
+
 mkdir -p /volume1/docker/rayane/www
 mkdir -p /volume1/docker/rayane/openvpn/data
 mkdir -p /volume1/docker/rayane/portainer
 mkdir -p /volume1/docker/rayane/shared
-mkdir -p /volume1/docker/rayane/docker-data/secrets/
+mkdir -p /volume1/docker/rayane/secrets/
+mkdir -p /volume1/docker/rayane/dms/mail-logs/
+mkdir -p /volume1/docker/rayane/dms/mail-state/
+mkdir -p /volume1/docker/rayane/dms/mail-data/
+mkdir -p /volume1/docker/rayane/dms/config/
 
 # Mise à jour des repositories
 updateRepo

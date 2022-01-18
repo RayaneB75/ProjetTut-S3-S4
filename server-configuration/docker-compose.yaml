@@ -78,10 +78,10 @@ services:
       - "587:587"
       - "993:993"
     volumes:
-      - /volume1/docker/rayane/docker-data/dms/mail-data/:/var/mail/
-      - /volume1/docker/rayane/docker-data/dms/mail-state/:/var/mail-state/
-      - /volume1/docker/rayane/docker-data/dms/mail-logs/:/var/log/mail/
-      - /volume1/docker/rayane/docker-data/dms/config/:/tmp/docker-mailserver/
+      - /volume1/docker/rayane/dms/mail-data/:/var/mail/
+      - /volume1/docker/rayane/dms/mail-state/:/var/mail-state/
+      - /volume1/docker/rayane/dms/mail-logs/:/var/log/mail/
+      - /volume1/docker/rayane/dms/config/:/tmp/docker-mailserver/
       - /etc/localtime:/etc/localtime:ro
     environment:
       - ENABLE_SPAMASSASSIN=1
@@ -102,12 +102,12 @@ services:
 
   orthanc:
       image: backup-orthanc
-      command: /volume1/docker/rayane/docker-data/secrets/  # Path to the configuration files (stored as secrets)
+      command: /volume1/docker/rayane/secrets/  # Path to the configuration files (stored as secrets)
       ports:
         - 4242:4242
         - 8042:8042
       volumes:
-        - /volume1/docker/rayane/docker-data/orthanc/:/var/lib/orthanc/db/  
+        - /volume1/docker/rayane/orthanc/:/var/lib/orthanc/db/  
       secrets:
         - orthanc.json
       environment:
@@ -116,9 +116,6 @@ services:
       networks:
         projet:
           ipv4_address: 10.10.0.7
-  secrets:
-    orthanc.json:
-      file: orthanc.json
 
 # Réseau de l'hyperviseur
 networks:
@@ -126,3 +123,7 @@ networks:
     ipam:
       config:
         - subnet: "10.10.0.0/16"
+
+secrets:
+    orthanc.json:
+      file: orthanc.json        
