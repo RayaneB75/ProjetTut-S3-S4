@@ -31,8 +31,7 @@ if (isset($_REQUEST['username'], $_REQUEST['email'], $_REQUEST['password'])){
 }else{
 ?>
 <form class="box" action="" method="post">
-	<h1 class="box-logo box-title"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">sitetest</a></h1>
-	<!-- On rickroll Mellouk ? -->
+	<h1 class="box-logo box-title"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"> Login </a></h1>
     <h1 class="box-title">S'inscrire</h1>
 	<input type="text" class="box-input" name="username" placeholder="Nom d'utilisateur" required />
     <input type="text" class="box-input" name="email" placeholder="Email" required />
