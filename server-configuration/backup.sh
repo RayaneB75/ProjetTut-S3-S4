@@ -1,5 +1,6 @@
 #!/bin/bash
 
+d=$(date %)
 # Backup des containers:
 for i in www openvpn ns portainer
 do
