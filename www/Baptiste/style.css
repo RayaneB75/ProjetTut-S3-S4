@@ -1,10 +1,10 @@
 body {
-  background: #fa3a3a;
+  background: #fff;
 }
 .box {
-  border: 1px solid #c4c4c4;
+  border: 1px solid #ddd;
   padding: 30px 25px 10px 25px;
-  background: white;
+  background: #ddd;
   margin: 30px auto;
   width: 360px;
 }
@@ -23,7 +23,7 @@ h1.box-title {
 }
 .box-button {
   border-radius: 5px;
-  background: #d2483c;
+  background: #32373C;
   text-align: center;
   cursor: pointer;
   font-size: 19px;
