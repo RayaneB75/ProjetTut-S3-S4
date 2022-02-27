@@ -28,13 +28,13 @@ if (isset($_REQUEST['username'], $_REQUEST['email'], $_REQUEST['type'], $_REQUES
     if($res){
        echo "<div class='success'>
              <h3>L'utilisateur a été créée avec succés.</h3>
-             <p>Cliquez <a href='../home.php'>ici</a> pour retourner à la page d'accueil</p>
+             <p>Cliquez <a href='home.php'>ici</a> pour retourner à la page d'accueil</p>
 			 </div>";
     }
 }else{
 ?>
 <form class="box" action="" method="post">
-	<h1 class="box-logo box-title"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">sitetest</a></h1>
+	<h1 class="box-logo box-title"><a href="https://pt.rayane.space/Rayane/">Retour à l'accueil</a></h1>
     <h1 class="box-title">Add user</h1>
 	<input type="text" class="box-input" name="username" placeholder="Nom d'utilisateur" required />
     <input type="text" class="box-input" name="email" placeholder="Email" required />
