@@ -1,9 +1,9 @@
 <?php
 	// Informations d'identification
 	define('DB_SERVER', 'localhost');
-	define('DB_USERNAME', 'root');
-	define('DB_PASSWORD', '');
-	//define('DB_USERNAME', 'projet');define('DB_PASSWORD', 'yZ5RufZ3LUVbpUPr');
+	define('DB_USERNAME', 'projet');
+	define('DB_PASSWORD', 'yZ5RufZ3LUVbpUPr');
+	//define('DB_USERNAME', '');define('DB_PASSWORD', '');
 	define('DB_NAME', 'registration');
 
 	// Connexion à la base de données MySQL 
