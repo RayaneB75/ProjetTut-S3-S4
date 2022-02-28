@@ -12,7 +12,7 @@ h1.box-logo a {
   text-decoration:none;
 }
 h1.box-title {
-  color: #AEAEAE;
+  color: #fff;
   background: #f8f8f8;
   font-weight: 300;
   padding: 15px 25px;
@@ -23,7 +23,7 @@ h1.box-title {
 }
 .box-button {
   border-radius: 5px;
-  background: #32373C;
+  background: #fff;
   text-align: center;
   cursor: pointer;
   font-size: 19px;
@@ -57,7 +57,7 @@ h1.box-title {
 }
 .box-input:focus {
     outline: none;
-    border-color:#5c7186;
+    border-color:#fff;
 }
 .sucess{
 	text-align: center;
