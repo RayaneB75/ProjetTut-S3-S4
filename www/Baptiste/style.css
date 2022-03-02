@@ -74,3 +74,12 @@ p.errorMessage {
     color: #FFFFFF;
     border-radius: 3px;
 }
+
+iframe {
+  border: 0px solid black;
+  width: 100%;
+}
+
+.output {
+  background: #eee;
+}
