@@ -1,4 +1,28 @@
 {
     "Name" : "${ORTHANC_NAME} in Docker Compose",
-    "RemoteAccessAllowed" : true
-}
+    "RemoteAccessAllowed" : true,
+    "AuthenticationEnabled" : true,
+    "SslEnabled" : true,
+    "SslCertificate" : "/cert/certificate.pem",
+  
+    "Plugins" : [
+      "/usr/local/share/orthanc/plugins/lib/libOrthancDicomWeb.so"
+    ],
+  
+    "DicomWeb" : {
+      "Enable" : true,            // Whether DICOMweb support is enabled
+      "Root" : "/dicom-web/",     // Root URI of the DICOMweb API (for QIDO-RS, STOW-RS and WADO-RS)
+      "EnableWado" : true,        // Whether WADO-URI (previously known as WADO) support is enabled
+      "WadoRoot" : "/wado",       // Root URI of the WADO-URI (aka. WADO) API
+      "Ssl" : true,               // Whether HTTPS should be used for subsequent WADO-RS requests
+      "QidoCaseSensitive" : true, // For QIDO-RS server, whether search is case sensitive (since release 0.5)
+      "StudiesMetadata" : "Full", // How study-level metadata is retrieved (since release 1.1, cf. section below)
+      "SeriesMetadata" : "Full"   // How series-level metadata is retrieved (since release 1.1, cf. section below)
+    },
+  
+    "RegisteredUsers" : {
+      "root" : "root"
+    }
+  
+  }
+  
