@@ -15,7 +15,9 @@ docker-compose run --rm openvpn ovpn_getclient $CLIENTNAME > $CLIENTNAME.ovpn
 [[ $2 == "-d" ]] && docker-compose run --rm openvpn ovpn_revokeclient $CLIENTNAME remove
 
 # Initialiser les fichiers de configuration et les certificats
-sudo docker run -d --name openvpn -v ~/openvpn/data:/etc/openvpn --log-driver=none --rm kylemanna/openvpn ovpn_genconfig -u udp://vpn.rayane.space
+sudo docker run -d --name openvpn -v ~/openvpn/data:/etc/openvpn --log-driver=none \
+--rm kylemanna/openvpn ovpn_genconfig -u udp://vpn.rayane.space
+
 docker-compose run --rm openvpn ovpn_initpki
 
 # Au cas où il y aurait des problèmes de droits
