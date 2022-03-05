@@ -2,7 +2,7 @@
 
 d=$(date %)
 # Backup des containers:
-for i in www openvpn ns portainer
+for i in www openvpn ns portainer dicom mail
 do
 	echo "Backup du container $i en cours"
 	sudo docker commit -p $i backup-$i

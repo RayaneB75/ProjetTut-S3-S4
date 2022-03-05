@@ -11,7 +11,7 @@ services:
       - 53:53/tcp
       - 953:953/tcp
     volumes:
-      - /volume1/docker/rayane/shared:/shared  
+      - /volume1/docker/rayane/shared:/shared
     networks:
       projet:
         ipv4_address: 10.10.0.2
@@ -73,10 +73,10 @@ services:
     hostname: mail
     domainname: health-sprint.fr
     ports:
-      - "25:25"
-      - "143:143"
-      - "587:587"
-      - "993:993"
+      - 25:25
+      - 143:143
+      - 587:587
+      - 993:993
     volumes:
       - /volume1/docker/rayane/dms/mail-data/:/var/mail/
       - /volume1/docker/rayane/dms/mail-state/:/var/mail-state/

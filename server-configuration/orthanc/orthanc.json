@@ -1,4 +1,28 @@
 {
     "Name" : "${ORTHANC_NAME} in Docker Compose",
-    "RemoteAccessAllowed" : true
-}
+    "RemoteAccessAllowed" : true,
+    "AuthenticationEnabled" : true,
+    "SslEnabled" : true,
+    "SslCertificate" : "/cert/certificate.pem",
+  
+    "Plugins" : [
+      "/usr/local/share/orthanc/plugins/lib/libOrthancDicomWeb.so"
+    ],
+  
+    "DicomWeb" : {
+      "Enable" : true,
+      "Root" : "/dicom-web/",
+      "EnableWado" : true,
+      "WadoRoot" : "/wado",
+      "Ssl" : true,
+      "QidoCaseSensitive" : true,
+      "StudiesMetadata" : "Full",
+      "SeriesMetadata" : "Full"
+    },
+  
+    "RegisteredUsers" : {
+      "root" : "root"
+    }
+  
+  }
+  

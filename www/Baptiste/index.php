@@ -16,6 +16,10 @@
 		<div class="sucess">
 		<h1>Bienvenue docteur <?php echo $_SESSION['username']; ?>!</h1>
 		<p>C'est votre espace utilisateur, vous pouvez visualiser vos fichier DICOM ici.</p>
+		</br>
+		<iframe title="dicomViewer" width="1280" height="720" src="https://dicom.rayane.space/">
+		</iframe>
+		</br>
 		<a href="logout.php">Déconnexion</a>
 		</div>
 	</body>
