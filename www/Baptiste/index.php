@@ -11,6 +11,7 @@
 <html>
 	<head>
 	<link rel="stylesheet" href="style.css" />
+	<title> Page d'accueil </title>
 	</head>
 	<body>
 		<div class="sucess">
