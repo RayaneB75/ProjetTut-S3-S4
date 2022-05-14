@@ -2,6 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="style.css" />
+	<title> Page de connexion </title>
 </head>
 <body>
 <?php
