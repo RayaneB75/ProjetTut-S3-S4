@@ -2,9 +2,6 @@ body {
   background: #E0E1DD;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 }
-a {
-  color: #0741AD;
-}
 .box {
   border: 1px solid #fff;
   padding: 30px 25px 10px 25px;
