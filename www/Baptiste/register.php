@@ -25,8 +25,8 @@ if (isset($_REQUEST['username'], $_REQUEST['email'], $_REQUEST['password'])){
 
     if($res){
        echo "<div class='sucess'>
-             <h3>Vous êtes inscrit avec succès.</h3>
-             <p>Cliquez ici pour vous <a href='login.php'>connecter</a></p>
+             <h2>Vous êtes inscrit avec succès.</h2>
+             <h3><a href='login.php'>Cliquez ici pour vous connecter</a></h3>
 			 </div>";
     }
 }else{
