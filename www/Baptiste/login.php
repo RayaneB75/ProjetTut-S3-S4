@@ -31,7 +31,7 @@ if (isset($_POST['username'])){
 	}
 }
 ?>
-<form class="box" action="" method="post" name="login">
+<form class="box" action="" method="post" name="login" target="_top">
 <input type="text" class="box-input" name="username" placeholder="Nom d'utilisateur">
 <input type="password" class="box-input" name="password" placeholder="Mot de passe">
 <input type="submit" value="Connexion " name="submit" class="box-button">
