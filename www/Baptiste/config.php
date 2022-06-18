@@ -13,4 +13,3 @@
 		die("ERREUR : Impossible de se connecter. " . mysqli_connect_error());
 	}
 ?>
-
