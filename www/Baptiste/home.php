@@ -19,7 +19,7 @@
 		<a href="add_user.php">Add user</a> | 
 		<a href="#">Update user</a> | 
 		<a href="#">Delete user</a> | 
-		<a href="../logout.php">Déconnexion</a>
+		<a href="../logout.php" style="color: #0741AD; font-size:24px">Déconnexion</a>
 		</ul>
 		</div>
 	</body>
