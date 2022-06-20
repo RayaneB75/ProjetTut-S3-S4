@@ -60,11 +60,11 @@ h1.box-title {
     outline: none;
     border-color:#fff;
 }
-.sucess{
+.success{
 	text-align: center;
 	color: black;
 }
-.sucess a {
+.success a {
 	text-decoration: none;
 	color: black;
 }
