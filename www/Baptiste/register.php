@@ -24,7 +24,7 @@ if (isset($_REQUEST['username'], $_REQUEST['email'], $_REQUEST['password'])){
 	$res = mysqli_query($conn, $query);
 
     if($res){
-       echo "<div class='sucess'>
+       echo "<div class='success'>
              <h2>Vous êtes inscrit avec succès.</h2>
              <h3><a href='login.php'>Cliquez ici pour vous connecter</a></h3>
 			 </div>";
