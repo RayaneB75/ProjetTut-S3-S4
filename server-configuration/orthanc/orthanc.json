@@ -1,22 +1,43 @@
 {
-  "Name" : "${ORTHANC_NAME} in Docker Compose",
+  "Name" : "Serveur PACS de ${ORTHANC_NAME}",
   "RemoteAccessAllowed" : true,
   "AuthenticationEnabled" : false,
   "SslEnabled" : true,
   "SslCertificate" : "/cert/certificate.pem",
-
+  "BuiltinDecoderTranscoderOrder" : "After",
+  "DicomServerEnabled" : true,
+  "DicomAet" : "Health Sprint",
+  "DicomCheckCalledAet" : false,
+  "DicomPort" : 4242,
+  "DefaultEncoding" : "Latin1",
   "Plugins" : [
-    "/usr/local/share/orthanc/plugins/lib/libOrthancDicomWeb.so"
+    "/usr/share/orthanc/plugins",
+    "/usr/local/share/orthanc/plugins"
   ],
-
   "DicomWeb" : {
+    "Enable" : true,            // Whether DICOMweb support is enabled
+    "Root" : "/dicom-web/",     // Root URI of the DICOMweb API (for QIDO-RS, STOW-RS and WADO-RS)
+    "EnableWado" : true,        // Whether WADO-URI (previously known as WADO) support is enabled
+    "WadoRoot" : "/wado",       // Root URI of the WADO-URI (aka. WADO) API
+    "Ssl" : true,               // Whether HTTPS should be used for subsequent WADO-RS requests
+    "QidoCaseSensitive" : true, // For QIDO-RS server, whether search is case sensitive (since release 0.5)
+    "StudiesMetadata" : "Full", // How study-level metadata is retrieved (since release 1.1, cf. section below)
+    "SeriesMetadata" : "Full",   // How series-level metadata is retrieved (since release 1.1, cf. section below)
+    "Servers" : {
+      "sample" : {
+        "Url" : "https://192.168.1.100/dicom-web/",
+        "HasDelete" : true,
+        "ChunkedTransfers" : true,                 // Set to "false" if "sample" is Orthanc <= 1.5.6
+        "HasWadoRsUniversalTransferSyntax" : true  // Set to "false" if "sample" is Orthanc DICOMweb plugin <= 1.0
+      }
+    }
+  },
+  "WebViewer" : {
+    "CacheSize" : 10,
+    "Threads" : 4
+  },
+  "Gdcm" : {
     "Enable" : true,
-    "Root" : "/dicom-web/",
-    "EnableWado" : true,
-    "WadoRoot" : "/wado",
-    "Ssl" : true,
-  "QidoCaseSensitive" : true,
-    "StudiesMetadata" : "Full",
-    "SeriesMetadata" : "Full"
+    "Throttling" : 4
   }
 }

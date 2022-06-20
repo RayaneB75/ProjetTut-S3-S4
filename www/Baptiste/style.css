@@ -1,6 +1,6 @@
 body {
   background: #E0E1DD;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 .box {
   border: 1px solid #fff;
@@ -19,7 +19,7 @@ h1.box-title {
   padding: 15px 25px;
   line-height: 30px;
   font-size: 25px;
-  text-align:center;
+  text-align: center;
   margin: -27px -26px 26px;
 }
 .box-button {
@@ -33,17 +33,17 @@ h1.box-title {
   padding: 0;
   color: #000000;
   border: 0;
-  outline:0;
+  outline: 0;
 }
 .box-register
 {
-  text-align:center;
-  margin-bottom:0px;
+  text-align: center;
+  margin-bottom: 0px;
 }
 .box-register a
 {
-  text-decoration:none;
-  font-size:12px;
+  text-decoration: none;
+  font-size: 12px;
   color:#666;
 }
 .box-input {
@@ -51,7 +51,7 @@ h1.box-title {
   background: #fff;
   border: 1px solid #ddd;
   margin-bottom: 25px;
-  padding-left:10px;
+  padding-left: 10px;
   border-radius: 5px;
   width: 347px;
   height: 50px;

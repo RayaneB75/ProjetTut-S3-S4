@@ -10,11 +10,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<link rel="stylesheet" href="style.css" />
-	<title> Page d'accueil </title>
+		<link rel="stylesheet" href="style.css" />
+		<title> Page d'accueil </title>
 	</head>
 	<body>
-		<div class="sucess">
+		<div class="success">
 		<h1>Bienvenue docteur <?php echo $_SESSION['username']; ?>!</h1>
 		<p>C'est votre espace utilisateur, vous pouvez visualiser vos fichier DICOM ici.</p>
 		</br>
