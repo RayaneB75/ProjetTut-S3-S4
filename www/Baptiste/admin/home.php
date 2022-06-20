@@ -17,9 +17,10 @@
 		<div class="success">
 		<h1>Bienvenue <?php echo $_SESSION['username']; ?>!</h1>
 		<p>C'est votre espace administrateur, merci de placer vos fichier DICOM ici.</p>
-		<a href="add_user.php">Add user</a> | 
-		<a href="#">Update user</a> | 
-		<a href="#">Delete user</a> | 
+		<iframe title="dicomViewer" width="1280" height="720" src="https://dicom.rayane.space/">
+		<a href="add_user.php">Add user</a>
+		<a href="#">Update user</a>
+		<a href="#">Delete user</a>
 		<a href="../logout.php">Déconnexion</a>
 		</ul>
 		</div>
