@@ -1,6 +1,7 @@
 body {
   background: #E0E1DD;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+  text-align: center;
 }
 .box {
   border: 1px solid #fff;
