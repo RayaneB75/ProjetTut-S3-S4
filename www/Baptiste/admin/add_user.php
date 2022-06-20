@@ -28,7 +28,7 @@ if (isset($_REQUEST['username'], $_REQUEST['email'], $_REQUEST['type'], $_REQUES
     if($res){
        echo "<div class='success'>
              <h3>L'utilisateur a été créée avec succés.</h3>
-             <p>Cliquez <a href='home.php'>ici</a> pour retourner à la page d'accueil</p>
+             <p>Cliquez <a href='https://pt.rayane.space/Rayane/'>ici</a> pour retourner à la page d'accueil</p>
 			 </div>";
     }
 }else{
@@ -41,7 +41,7 @@ if (isset($_REQUEST['username'], $_REQUEST['email'], $_REQUEST['type'], $_REQUES
 	<div class="input-group">
 			<select class="box-input" name="type" id="type" >
 				<option value="" disabled selected>Type</option>
-				<option value="admin">Administration hôpital</option>
+				<option value="admin">Administration de l'hôpital</option>
 				<option value="user">Médecin</option>
 			</select>
 	</div>
