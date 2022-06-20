@@ -37,7 +37,7 @@ if (isset($_REQUEST['username'], $_REQUEST['email'], $_REQUEST['password'])){
     <input type="password" class="box-input" name="password" placeholder="Mot de passe" required />
     <input type="submit" name="submit" value="S'inscrire" class="box-button" />
     <p class="box-register">Déjà inscrit? <a href="login.php">Connectez-vous ici</a></p>
-	<p class="box-register"><a href="https://pt.rayane.space/Rayane/">Retour à l'accueil</a></p>
+	<p class="box-register"><a href="https://pt.rayane.space/Rayane/" target="_top">Retour à l'accueil</a></p>
 </form>
 <?php 
 }
