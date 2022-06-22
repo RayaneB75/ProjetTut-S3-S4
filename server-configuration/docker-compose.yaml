@@ -2,7 +2,7 @@ version:  '3.8'
 services:
 ## Serveur DNS via bind9 : internetsystemsconsortium/bind9 (v9.16) ##
   ns:
-    image: internetsystemsconsortium/bind9:9.16
+    image: backup-ns
     restart: unless-stopped
     container_name: ns
     ports:
@@ -67,31 +67,35 @@ services:
 
 ## OpenEMR = Electronic Medical Record : openemr/openemr:6.1.0 ##
   emr:
-    image: openemr/openemr:6.1.0
+    image: backup-emr
     restart: unless-stopped
     container_name: emr
     ports:
     - 280:280
     - 2443:2443
+    - 10000:10000
     volumes:
     - logvolume01:/var/log
     - sitevolume:/var/www/localhost/htdocs/openemr/sites
     environment:
-      MYSQL_HOST: 10.10.0.3
-      MYSQL_ROOT_PASS: Projet!94400
+      MYSQL_HOST: mysql
+      MYSQL_ROOT_PASS: root
+      MYSQL_USER: openemr
+      MYSQL_PASS: openemr
       OE_USER: admin
       OE_PASS: pass
     depends_on:
-    - www
+      - mysql
     networks:
       projet:
         ipv4_address: 10.10.0.6
 
-## Orthanc : Dicom Viewer et PACS server ##
+## Orthanc : Dicom Viewer et PACS server = jodogne/orthanc-plugins:1.9.7 ##
   orthanc:
-    image: jodogne/orthanc-plugins:1.9.7
-    command: /run/secrets  # Path to the configuration files (stored as secrets)
+    image: backup-orthanc
+    restart: unless-stopped
     container_name: orthanc
+    command: /run/secrets  # Path to the configuration files (stored as secrets)
     ports:
       - 4242:4242
       - 8042:8042
@@ -101,10 +105,23 @@ services:
       - /volume1/docker/rayane/shared:/shared/
     environment:
       - ORTHANC_NAME=HealthSprint
-    restart: unless-stopped
     networks:
       projet:
         ipv4_address: 10.10.0.7
+
+## Base de données MySQL pour OpenEMR : mariadb:10.5 ##
+  mysql:
+    image: backup-mysql
+    restart: unless-stopped
+    container_name: mysql
+    command: ['mysqld','--character-set-server=utf8mb4']
+    volumes:
+    - databasevolume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      projet:
+        ipv4_address: 10.10.0.8
 
 # Reseau de l'hyperviseur
 networks:
