@@ -7,7 +7,7 @@ echo `date`
 m=$(date | cut -d " " -f2)
 j=$(date | cut -d " " -f3)
 
-for i in www openvpn ns portainer orthanc emr
+for i in www openvpn ns portainer orthanc emr mysql
 do
         echo "Backup du container $i en cours"
         sudo docker commit -p $i backup-$i
