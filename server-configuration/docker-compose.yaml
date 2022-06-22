@@ -66,9 +66,10 @@ services:
     command: -H unix:///var/run/docker.sock
 
 ## OpenEMR = Electronic Medical Record : openemr/openemr:6.1.0 ##
-  openemr:
-    restart: always
+  emr:
     image: openemr/openemr:6.1.0
+    restart: unless-stopped
+    container_name: emr
     ports:
     - 280:280
     - 2443:2443
@@ -76,7 +77,7 @@ services:
     - logvolume01:/var/log
     - sitevolume:/var/www/localhost/htdocs/openemr/sites
     environment:
-      MYSQL_HOST: www
+      MYSQL_HOST: 10.10.0.3
       MYSQL_ROOT_PASS: Projet!94400
       OE_USER: admin
       OE_PASS: pass
