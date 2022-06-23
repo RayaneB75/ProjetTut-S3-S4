@@ -18,6 +18,8 @@
 			<h1>Bienvenue docteur <?php echo $_SESSION['username']; ?> !</h1>
 			<p>C'est votre espace utilisateur, vous pouvez visualiser vos fichier DICOM ici.</p>
 			<p>Pour accéder aux dossiers médicaux électroniques <a href=https://emr.rayane.space/openemr> cliquez ici </a></p>
+		
+		<!--Début du code pour le bouton vers la page de personnalisation de profile.-->
 			<p>Pour acceder à votre espace personnel veuiller cliquer sur le bouton ci-dessous.</p>
 			<bouton onclick="windows.location.href='www\Programme_Jassem\profile.html';">Espace personnel</bouton>
 					<style>
@@ -60,6 +62,8 @@
 						right: 0;
 					}
 				</style>
+<!--Fin du code pour le bouton vers la page de personnalisation de profile.-->
+
 			</br>
 			<iframe title="dicomViewer" width="1280" height="720" src="https://dicom.rayane.space/">
 			</iframe>
