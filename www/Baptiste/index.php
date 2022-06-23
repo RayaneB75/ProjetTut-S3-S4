@@ -33,7 +33,7 @@
 		</iframe>
 		</br>
 		<a href="logout.php">Déconnexion</a>
-
+        <button id="Déconnexion">Déconnexion</button>
 			
 		</div>
 	<body>
