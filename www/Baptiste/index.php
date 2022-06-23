@@ -6,11 +6,6 @@
 		header("Location: login.php");
 		exit(); 
 	}
-
-	//  Enregistreur
-	<input type="text" x-webkit-speech />     
-
-	
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,4 +25,5 @@
 		<a href="logout.php">Déconnexion</a>
 		</div>
 	</body>
-</html>
+<html>
+
