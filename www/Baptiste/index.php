@@ -6,6 +6,11 @@
 		header("Location: login.php");
 		exit(); 
 	}
+
+	//  Enregistreur
+	<input type="text" x-webkit-speech />     
+
+	
 ?>
 <!DOCTYPE html>
 <html>
