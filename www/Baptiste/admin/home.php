@@ -17,6 +17,7 @@
 		<div class="success">
 		<h1>Bienvenue <?php echo $_SESSION['username']; ?> !</h1>
 		<p>C'est votre espace administrateur, merci de placer vos fichier DICOM ici.</p>
+		<p>Pour accéder les dossiers médicaux électroniques <a href=https://emr.rayane.space/openemr> cliquez ici </a></p>
 		</br>
 		<iframe title="dicomViewer" width="1280" height="720" src="https://dicom.rayane.space/">
 		</br>
