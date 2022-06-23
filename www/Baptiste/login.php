@@ -42,5 +42,8 @@ if (isset($_POST['username'])){
 <?php } ?>
 </form>
 <script src="https://pt.rayane.space/Rayane/cookiechoices.js"></script><script>document.addEventListener('DOMContentLoaded', function(event){cookieChoices.showCookieConsentBar('Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.', 'J’accepte', 'En savoir plus', 'https://pt.rayane.space/Rayane/index.php/politique-de-confidentialite/');});</script>
+<script type="texte/javascript" id="cookieinfo"
+ src="//cookieinfoscript.com/js/cookieinfo.min.js">
+</script>
 </body>
 </html>
