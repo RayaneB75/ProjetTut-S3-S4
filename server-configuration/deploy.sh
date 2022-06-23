@@ -80,4 +80,4 @@ getBack "ns" ; getBack "www" ; getBack "portainer" ; getBack "openvpn"
 echo "\e[4m Chemin d'accès du fichier \e[32m docker-compose \e[0m ?"
 read fic
 echo "\e[32m On démarre les container docker \e[0m"
-sudo docker-compose up -d $fic
+sudo docker-compose -f $fic up -d --remove-orphans

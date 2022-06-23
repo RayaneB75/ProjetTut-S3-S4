@@ -1,5 +1,4 @@
 version:  '3.8'
-
 services:
 ## Serveur DNS via bind9 : internetsystemsconsortium/bind9 (v9.16) ##
   ns:
@@ -46,7 +45,7 @@ services:
       projet:
         ipv4_address: 10.10.0.4
     cap_add:
-      - NET_ADMIN    
+      - NET_ADMIN
 
 ## Portainer = Gestion des containers docker : portainer/portainer-ce ##
   portainer:
@@ -66,64 +65,72 @@ services:
         ipv4_address: 10.10.0.5
     command: -H unix:///var/run/docker.sock
 
-## docker-mailserver = Serveur IMAP/POP et SMTP docker.io/mailserver/docker-mailserver ##
-  mailserver:
-    image: backup-mail
-    container_name: mailserver
-    hostname: mail
-    domainname: health-sprint.fr
+## OpenEMR = Electronic Medical Record : openemr/openemr:6.1.0 ##
+  emr:
+    image: backup-emr
+    restart: unless-stopped
+    container_name: emr
     ports:
-      - 25:25
-      - 143:143
-      - 587:587
-      - 993:993
+    - 280:280
+    - 2443:2443
+    - 10000:10000
     volumes:
-      - /volume1/docker/rayane/dms/mail-data/:/var/mail/
-      - /volume1/docker/rayane/dms/mail-state/:/var/mail-state/
-      - /volume1/docker/rayane/dms/mail-logs/:/var/log/mail/
-      - /volume1/docker/rayane/dms/config/:/tmp/docker-mailserver/
-      - /etc/localtime:/etc/localtime:ro
+    - logvolume01:/var/log
+    - sitevolume:/var/www/localhost/htdocs/openemr/sites
     environment:
-      - ENABLE_SPAMASSASSIN=1
-      - SPAMASSASSIN_SPAM_TO_INBOX=1
-      - ENABLE_CLAMAV=1
-      - ENABLE_FAIL2BAN=1
-      - ENABLE_POSTGREY=1
-      - ENABLE_SASLAUTHD=0
-      - ONE_DIR=1
-      - DMS_DEBUG=0
-    cap_add:
-      - NET_ADMIN
-      - SYS_PTRACE
-    restart: unless-stooped
+      MYSQL_HOST: mysql
+      MYSQL_ROOT_PASS: root
+      MYSQL_USER: openemr
+      MYSQL_PASS: openemr
+      OE_USER: admin
+      OE_PASS: pass
+    depends_on:
+      - mysql
     networks:
-        projet:
-          ipv4_address: 10.10.0.6
+      projet:
+        ipv4_address: 10.10.0.6
 
+## Orthanc : Dicom Viewer et PACS server = jodogne/orthanc-plugins:1.9.7 ##
   orthanc:
-      image: backup-orthanc
-      command: /volume1/docker/rayane/secrets/  # Path to the configuration files (stored as secrets)
-      ports:
-        - 4242:4242
-        - 8042:8042
-      volumes:
-        - /volume1/docker/rayane/orthanc/:/var/lib/orthanc/db/  
-      secrets:
-        - orthanc.json
-      environment:
-        - ORTHANC_NAME=HealthSprint
-      restart: unless-stooped  
-      networks:
-        projet:
-          ipv4_address: 10.10.0.7
+    image: backup-orthanc
+    restart: unless-stopped
+    container_name: orthanc
+    command: /run/secrets  # Path to the configuration files (stored as secrets)
+    ports:
+      - 4242:4242
+      - 8042:8042
+    volumes:
+      - /volume1/docker/rayane/orthanc/:/var/lib/orthanc/db/
+      - /volume1/docker/rayane/secrets/:/run/secrets/
+      - /volume1/docker/rayane/shared:/shared/
+    environment:
+      - ORTHANC_NAME=HealthSprint
+    networks:
+      projet:
+        ipv4_address: 10.10.0.7
 
-# Réseau de l'hyperviseur
+## Base de données MySQL pour OpenEMR : mariadb:10.5 ##
+  mysql:
+    image: backup-mysql
+    restart: unless-stopped
+    container_name: mysql
+    command: ['mysqld','--character-set-server=utf8mb4']
+    volumes:
+    - databasevolume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      projet:
+        ipv4_address: 10.10.0.8
+
+# Reseau de l'hyperviseur
 networks:
   projet:
     ipam:
       config:
         - subnet: "10.10.0.0/16"
 
-secrets:
-    orthanc.json:
-      file: orthanc.json        
+volumes:
+  logvolume01: {}
+  sitevolume: {}
+  databasevolume: {}
