@@ -1,11 +1,11 @@
 body {
-  background: #E0E1DD;
+  background: #EDF9FF;
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 .box {
-  border: 1px solid #fff;
+  border: 0px solid #EDF9FF;
   padding: 30px 25px 10px 25px;
-  background: #ddd;
+  background: #EDF9FF;
   margin: 30px auto;
   width: 360px;
 }
@@ -14,7 +14,7 @@ h1.box-logo a {
 }
 h1.box-title {
   color: #000000;
-  background: #f8f8f8;
+  background: #EDF9FF;
   font-weight: 300;
   padding: 15px 25px;
   line-height: 30px;
