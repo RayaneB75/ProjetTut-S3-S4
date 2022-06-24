@@ -3,7 +3,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 .box {
-  border: 0px solid #EDF9FF;
+  border: 1px solid #f9f9f9;
   padding: 30px 25px 10px 25px;
   background: #EDF9FF;
   margin: 30px auto;
